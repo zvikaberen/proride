@@ -129,6 +129,24 @@ h3 {
   color: var(--muted);
 }
 
+.service-copy {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 40rem;
+  color: var(--muted);
+}
+
+.fit-label {
+  margin-top: 1.7rem;
+  font-weight: 800;
+}
+
+.service-close {
+  max-width: 40rem;
+  margin-top: 1.5rem;
+  color: var(--paper);
+}
+
 .tick {
   width: 22px;
   height: 22px;
