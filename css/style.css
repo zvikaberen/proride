@@ -556,8 +556,17 @@ html[lang="en"] .hero-copy {
   font-size: 0.92rem;
 }
 
-.trust .is-shabbat b {
+.trust .is-shabbat {
+  align-content: center;
+  background: rgba(245, 196, 0, 0.1);
+}
+
+.trust .is-shabbat b,
+.trust .is-shabbat b span {
   color: var(--yellow);
+  font-size: clamp(1.45rem, 2.2vw, 1.85rem);
+  font-weight: 800;
+  line-height: 1.2;
 }
 
 .section {
