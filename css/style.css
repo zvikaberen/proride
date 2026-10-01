@@ -345,6 +345,10 @@ html[lang="en"] .brand-mark svg {
   transform: scaleX(-1);
 }
 
+html[lang="en"] .hero .chevs {
+  transform: none;
+}
+
 html[lang="en"] .card h3,
 html[lang="en"] .points li {
   justify-content: flex-start;
@@ -402,23 +406,12 @@ html[lang="en"] .hero h1 {
 
 .hero {
   position: relative;
-  display: flex;
-  min-height: 100vh;
-  min-height: 100dvh;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  padding-top: calc(var(--header) + 1.5rem);
   overflow-x: clip;
 }
 
-.hero-media,
-.hero-shade {
-  position: absolute;
-  inset: 0;
-}
-
 .hero-media {
+  position: relative;
+  height: clamp(300px, 62vh, 720px);
   overflow: hidden;
 }
 
@@ -426,42 +419,21 @@ html[lang="en"] .hero h1 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 22%;
+  object-position: 50% 54%;
 }
 
 .hero-shade {
-  z-index: 1;
-  background:
-    linear-gradient(to top, #0b0b0d 0%, rgba(11, 11, 13, 0.94) 20%, rgba(11, 11, 13, 0.62) 40%, rgba(11, 11, 13, 0.12) 62%, rgba(11, 11, 13, 0.18) 100%),
-    linear-gradient(to bottom, rgba(11, 11, 13, 0.55), transparent 18%);
-}
-
-.hero-copy,
-.hero-slash {
-  position: relative;
-  z-index: 2;
-}
-
-.hero-copy {
-  width: min(920px, calc(100% - 2.5rem));
-  padding-bottom: 0.2rem;
-  text-align: center;
-}
-
-.hero-copy::before {
-  content: "";
   position: absolute;
-  z-index: -1;
-  inset-block: -28% -12%;
-  inset-inline: -8%;
-  background: radial-gradient(ellipse 78% 72% at 50% 42%, rgba(11, 11, 13, 0.84), rgba(11, 11, 13, 0.5) 58%, rgba(11, 11, 13, 0) 78%);
+  inset: 0;
+  background: linear-gradient(to top, #0b0b0d 0%, rgba(11, 11, 13, 0.28) 18%, transparent 40%);
   pointer-events: none;
 }
 
-.hero-copy .eyebrow,
-.hero-copy h1,
-.hero-copy .lede {
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+.hero-copy {
+  width: min(var(--wrap), calc(100% - 2.5rem));
+  margin-inline: auto;
+  padding: 0.4rem 0 2.6rem;
+  text-align: start;
 }
 
 .hero-name {
@@ -474,8 +446,12 @@ html[lang="en"] .hero h1 {
 .title-row {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.75rem;
+}
+
+.hero .chevs {
+  transform: scaleX(-1);
 }
 
 .chevs {
@@ -491,8 +467,8 @@ html[lang="en"] .hero h1 {
 
 .lede {
   margin-top: 1rem;
-  margin-inline: auto;
-  max-width: 32rem;
+  margin-inline: 0;
+  max-width: 36rem;
   color: var(--paper);
   font-size: 1.15rem;
 }
@@ -500,8 +476,9 @@ html[lang="en"] .hero h1 {
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.75rem;
+  max-width: 36rem;
   margin-top: 1.4rem;
 }
 
@@ -778,6 +755,15 @@ html[lang="en"] .hero h1 {
 }
 
 @media (max-width: 899px) {
+  .hero-media {
+    height: clamp(220px, 38vh, 380px);
+  }
+
+  .hero-actions,
+  .hero .shabbat-note {
+    display: none;
+  }
+
   .header-phone {
     display: none;
   }
@@ -811,7 +797,7 @@ html[lang="en"] .hero h1 {
   }
 
   .hero-slash {
-    margin-bottom: 4.6rem;
+    margin-bottom: 0;
   }
 
   .trust .is-shabbat {
