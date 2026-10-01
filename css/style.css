@@ -464,6 +464,13 @@ html[lang="en"] .hero h1 {
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
 }
 
+.hero-name {
+  margin-bottom: 0.35rem;
+  font-size: clamp(1.9rem, 4.6vw, 3.15rem);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
 .title-row {
   display: flex;
   align-items: center;
