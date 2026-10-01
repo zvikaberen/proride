@@ -1,4 +1,53 @@
 (function () {
+  var copy = {
+    he: {
+      title: "ישראל סדובסקי | הסעות פרטיות לכל הארץ",
+      description: "הסעות פרטיות עם הנהג ישראל סדובסקי מרכסים, ישראל, לכל הארץ. רכב מרווח עד 8 נוסעים. לא עובד בשבת. 052-702-79-27",
+      nav: "ניווט"
+    },
+    en: {
+      title: "Israel Sadovsky | Private rides across Israel",
+      description: "Private rides with driver Israel Sadovsky from Rekhasim, Israel, across the country. Room for up to 8 passengers. Does not work on Shabbat. 052-702-79-27",
+      nav: "Navigation"
+    }
+  };
+
+  function applyLang(lang) {
+    if (lang !== "en") lang = "he";
+    var pack = copy[lang];
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "en" ? "ltr" : "rtl";
+    document.title = pack.title;
+    var meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", pack.description);
+    var locale = document.querySelector('meta[property="og:locale"]');
+    if (locale) locale.setAttribute("content", lang === "en" ? "en_US" : "he_IL");
+    var nav = document.querySelector("[data-nav]");
+    if (nav) nav.setAttribute("aria-label", pack.nav);
+    document.querySelectorAll("[data-set-lang]").forEach(function (button) {
+      var on = button.getAttribute("data-set-lang") === lang;
+      button.classList.toggle("is-active", on);
+      button.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    document.querySelectorAll("[data-alt-he]").forEach(function (img) {
+      img.alt = lang === "en" ? img.getAttribute("data-alt-en") : img.getAttribute("data-alt-he");
+    });
+    document.querySelectorAll("[data-label-he]").forEach(function (node) {
+      node.setAttribute("aria-label", lang === "en" ? node.getAttribute("data-label-en") : node.getAttribute("data-label-he"));
+    });
+    try {
+      localStorage.setItem("lang", lang);
+    } catch (e) {}
+  }
+
+  applyLang(document.documentElement.lang);
+
+  document.querySelectorAll("[data-set-lang]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      applyLang(button.getAttribute("data-set-lang"));
+    });
+  });
+
   var header = document.querySelector("[data-header]");
   var toggle = document.querySelector("[data-nav-toggle]");
   var nav = document.querySelector("[data-nav]");

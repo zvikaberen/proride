@@ -7,10 +7,11 @@
     <title>ישראל סדובסקי | הסעות פרטיות לכל הארץ</title>
     <meta name="description" content="הסעות פרטיות עם הנהג ישראל סדובסקי מרכסים, ישראל, לכל הארץ. רכב מרווח עד 8 נוסעים. לא עובד בשבת. 052-702-79-27">
     <meta name="theme-color" content="#0B0B0D">
-    <meta property="og:title" content="ישראל סדובסקי | הסעות פרטיות לכל הארץ">
-    <meta property="og:description" content="ישראל סדובסקי, נהג הסעות מרכסים, ישראל. נסיעות לכל הארץ ברכב מרווח עד 8 נוסעים. לא עובד בשבת.">
+    <meta property="og:title" content="ישראל סדובסקי | Israel Sadovsky">
+    <meta property="og:description" content="ישראל סדובסקי, נהג הסעות מרכסים, ישראל. נסיעות לכל הארץ. Israel Sadovsky, private rides from Rekhasim across Israel. Does not work on Shabbat.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="he_IL">
+    <meta property="og:locale:alternate" content="en_US">
     <meta property="og:image" content="assets/images/staria-van.jpg">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,33 +19,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="preload" as="image" href="assets/images/staria-van.jpg">
+    <script>
+      (function () {
+        var lang = "he";
+        try {
+          lang = localStorage.getItem("lang") || "he";
+        } catch (e) {}
+        if (lang !== "en") lang = "he";
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === "en" ? "ltr" : "rtl";
+      })();
+    </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "TaxiService",
         "name": "ישראל סדובסקי — הסעות פרטיות",
-        "description": "הסעות פרטיות עם הנהג ישראל סדובסקי. הבסיס ברכסים, ישראל, והנסיעות לכל הארץ. לא עובד בשבת.",
+        "alternateName": "Israel Sadovsky — private rides",
+        "description": "הסעות פרטיות עם הנהג ישראל סדובסקי. הבסיס ברכסים, ישראל, והנסיעות לכל הארץ. Private rides with driver Israel Sadovsky, based in Rekhasim, Israel, across the country. Does not work on Shabbat.",
         "telephone": "+972527027927",
         "image": "assets/images/staria-van.jpg",
         "areaServed": {
           "@type": "Country",
-          "name": "ישראל"
+          "name": "Israel"
         },
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "רכסים",
+          "addressLocality": "Rekhasim",
           "addressCountry": "IL"
         },
         "employee": {
           "@type": "Person",
-          "name": "ישראל סדובסקי",
-          "jobTitle": "נהג"
+          "name": "Israel Sadovsky",
+          "alternateName": "ישראל סדובסקי",
+          "jobTitle": "Driver"
         }
       }
     </script>
   </head>
   <body>
-    <a class="skip" href="#main">לתוכן</a>
+    <a class="skip" href="#main"><span class="lang-he">לתוכן</span><span class="lang-en">Skip to content</span></a>
 
     <header class="site-header" data-header>
       <div class="wrap header-bar">
@@ -57,24 +71,28 @@
             </svg>
           </span>
           <span class="brand-text">
-            <strong>ישראל סדובסקי</strong>
-            <small>רכסים, ישראל · לכל הארץ</small>
+            <strong><span class="lang-he">ישראל סדובסקי</span><span class="lang-en">Israel Sadovsky</span></strong>
+            <small><span class="lang-he">רכסים, ישראל · לכל הארץ</span><span class="lang-en">Rekhasim, Israel · nationwide</span></small>
           </span>
         </a>
 
         <nav id="site-nav" class="site-nav" data-nav aria-label="ניווט">
-          <a href="#sherut">השירות</a>
-          <a href="#lama">למה איתי</a>
-          <a href="#ech">איך קובעים</a>
+          <a href="#sherut"><span class="lang-he">השירות</span><span class="lang-en">Service</span></a>
+          <a href="#lama"><span class="lang-he">למה איתי</span><span class="lang-en">Why me</span></a>
+          <a href="#ech"><span class="lang-he">איך קובעים</span><span class="lang-en">How to book</span></a>
         </nav>
 
         <div class="header-tools">
+          <div class="lang-switch" role="group" aria-label="Language">
+            <button type="button" class="is-active" data-set-lang="he" aria-pressed="true">עב</button>
+            <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+          </div>
           <a class="btn btn-yellow btn-sm header-phone" href="tel:+972527027927">
             <bdi dir="ltr">052-702-79-27</bdi>
           </a>
           <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
             <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="sr-only">תפריט</span>
+            <span class="sr-only"><span class="lang-he">תפריט</span><span class="lang-en">Menu</span></span>
           </button>
         </div>
       </div>
@@ -86,77 +104,89 @@
           <img
             src="assets/images/staria-van.jpg"
             alt="מסעית הסעות לבנה של ישראל סדובסקי, מבט חזיתי בחניון"
+            data-alt-he="מסעית הסעות לבנה של ישראל סדובסקי, מבט חזיתי בחניון"
+            data-alt-en="White ride van of Israel Sadovsky, front view in a parking lot"
             width="1200"
             height="1600"
             fetchpriority="high">
         </div>
         <div class="hero-shade" aria-hidden="true"></div>
         <div class="hero-copy">
-          <p class="eyebrow">ישראל סדובסקי · רכסים, ישראל</p>
+          <p class="eyebrow"><span class="lang-he">ישראל סדובסקי · רכסים, ישראל</span><span class="lang-en">Israel Sadovsky · Rekhasim, Israel</span></p>
           <div class="title-row">
             <svg class="chevs" viewBox="0 0 78 64" aria-hidden="true">
               <path d="M22 6 L6 32 L22 58"></path>
               <path d="M46 6 L30 32 L46 58"></path>
               <path d="M70 6 L54 32 L70 58"></path>
             </svg>
-            <h1>הסעות<br>לכל הארץ</h1>
+            <h1><span class="lang-he">הסעות<br>לכל הארץ</span><span class="lang-en">Rides<br>across Israel</span></h1>
           </div>
-          <p class="lede">רכב מרווח ונוח עד 8 נוסעים.<br>אותו נהג, אותו רכב, יחס אישי עד היעד.<br>יוצאים מרכסים, ומסיעים לכל הארץ.</p>
+          <p class="lede">
+            <span class="lang-he">רכב מרווח ונוח עד 8 נוסעים.<br>אותו נהג, אותו רכב, יחס אישי עד היעד.<br>יוצאים מרכסים, ומסיעים לכל הארץ.</span>
+            <span class="lang-en">A roomy, comfortable vehicle for up to 8 passengers.<br>The same driver, the same vehicle, personal care to the door.<br>We leave from Rekhasim and ride across Israel.</span>
+          </p>
           <div class="hero-actions">
             <a class="btn btn-yellow" href="tel:+972527027927">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.6h2.6l1.1 2.8-1.7 1a12.2 12.2 0 0 0 6 6l1-1.7 2.8 1.1v2.6c0 .9-.7 1.6-1.6 1.7A14.6 14.6 0 0 1 4.9 5.2c.1-.9.8-1.6 1.7-1.6z"></path></svg>
-              התקשרו <bdi dir="ltr">052-702-79-27</bdi>
+              <span class="lang-he">התקשרו</span><span class="lang-en">Call</span> <bdi dir="ltr">052-702-79-27</bdi>
             </a>
-            <a class="btn btn-ghost" href="https://wa.me/972527027927?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%94%D7%A1%D7%A2%D7%94" target="_blank" rel="noopener noreferrer">
+            <a class="btn btn-ghost lang-he" href="https://wa.me/972527027927?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%94%D7%A1%D7%A2%D7%94" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 3.2c-4.7 0-8.5 3.6-8.5 8.1 0 1.6.5 3.1 1.3 4.3L3.6 20.8l5.4-1.4c.9.4 1.9.6 3 .6 4.7 0 8.5-3.6 8.5-8.1S16.7 3.2 12 3.2zm0 2.1c3.5 0 6.3 2.6 6.3 6s-2.8 6-6.3 6c-1 0-1.9-.2-2.7-.6l-.4-.2-3.2.8.9-3.1-.3-.4a5.7 5.7 0 0 1-1.3-3.6c0-3.4 2.8-6 6.3-6z"></path></svg>
               וואטסאפ
             </a>
+            <a class="btn btn-ghost lang-en" href="https://wa.me/972527027927?text=Hi%20Israel%2C%20I%20would%20like%20to%20book%20a%20ride" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 3.2c-4.7 0-8.5 3.6-8.5 8.1 0 1.6.5 3.1 1.3 4.3L3.6 20.8l5.4-1.4c.9.4 1.9.6 3 .6 4.7 0 8.5-3.6 8.5-8.1S16.7 3.2 12 3.2zm0 2.1c3.5 0 6.3 2.6 6.3 6s-2.8 6-6.3 6c-1 0-1.9-.2-2.7-.6l-.4-.2-3.2.8.9-3.1-.3-.4a5.7 5.7 0 0 1-1.3-3.6c0-3.4 2.8-6 6.3-6z"></path></svg>
+              WhatsApp
+            </a>
           </div>
-          <p class="shabbat-note">לא עובד בשבת</p>
+          <p class="shabbat-note"><span class="lang-he">לא עובד בשבת</span><span class="lang-en">Does not work on Shabbat</span></p>
         </div>
         <div class="hero-slash" aria-hidden="true"><span></span></div>
       </section>
 
       <ul class="trust">
         <li>
-          <b>עד 8</b>
-          <span>נוסעים ברכב מרווח</span>
+          <b><span class="lang-he">עד 8</span><span class="lang-en">Up to 8</span></b>
+          <span><span class="lang-he">נוסעים ברכב מרווח</span><span class="lang-en">passengers, with room to spare</span></span>
         </li>
         <li>
-          <b>כל הארץ</b>
-          <span>אזור השירות: כל ישראל</span>
+          <b><span class="lang-he">כל הארץ</span><span class="lang-en">All of Israel</span></b>
+          <span><span class="lang-he">אזור השירות: כל ישראל</span><span class="lang-en">the service area is the whole country</span></span>
         </li>
         <li>
-          <b>רכסים</b>
-          <span>הבסיס של ישראל סדובסקי</span>
+          <b><span class="lang-he">רכסים</span><span class="lang-en">Rekhasim</span></b>
+          <span><span class="lang-he">הבסיס של ישראל סדובסקי</span><span class="lang-en">home base of Israel Sadovsky</span></span>
         </li>
         <li class="is-shabbat">
-          <b>לא עובד בשבת</b>
-          <span>מכניסת שבת ועד צאתה</span>
+          <b><span class="lang-he">לא עובד בשבת</span><span class="lang-en">No Shabbat</span></b>
+          <span><span class="lang-he">מכניסת שבת ועד צאתה</span><span class="lang-en">from the start of Shabbat until it ends</span></span>
         </li>
       </ul>
 
       <section class="section" id="sherut">
         <div class="wrap">
-          <p class="eyebrow">השירות</p>
-          <h2>לאיזה נסיעות זה מתאים</h2>
-          <p class="section-lead">ישראל סדובסקי יוצא מרכסים, ישראל, ומסיע לכל הארץ. אותו רכב, אותו יחס, תיאום ישיר.</p>
+          <p class="eyebrow"><span class="lang-he">השירות</span><span class="lang-en">The service</span></p>
+          <h2><span class="lang-he">לאיזה נסיעות זה מתאים</span><span class="lang-en">Rides this vehicle is made for</span></h2>
+          <p class="section-lead">
+            <span class="lang-he">ישראל סדובסקי יוצא מרכסים, ישראל, ומסיע לכל הארץ. אותו רכב, אותו יחס, תיאום ישיר.</span>
+            <span class="lang-en">Israel Sadovsky sets out from Rekhasim, Israel, and rides across the country. The same vehicle, the same care, arranged directly with him.</span>
+          </p>
           <div class="cards">
             <article class="card">
-              <h3>נתב״ג וטיסות <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></h3>
-              <p>איסוף והורדה לפי שעת הטיסה שקובעים מראש. מגיעים בזמן, בלי לחץ ובלי הפתעות.</p>
+              <h3><span class="lang-he">נתב״ג וטיסות</span><span class="lang-en">Airport and flights</span> <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></h3>
+              <p><span class="lang-he">איסוף והורדה לפי שעת הטיסה שקובעים מראש. מגיעים בזמן, בלי לחץ ובלי הפתעות.</span><span class="lang-en">Pickup and drop-off at the flight time you set in advance. We arrive on time, without rush or surprises.</span></p>
             </article>
             <article class="card">
-              <h3>אירועים ושמחות <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></h3>
-              <p>חתונה, חינה, בר או בת מצווה. מגיעים בזמן לאירוע, ומחזירים בשעה שקבעתם.</p>
+              <h3><span class="lang-he">אירועים ושמחות</span><span class="lang-en">Events and celebrations</span> <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></h3>
+              <p><span class="lang-he">חתונה, חינה, בר או בת מצווה. מגיעים בזמן לאירוע, ומחזירים בשעה שקבעתם.</span><span class="lang-en">A wedding, henna, or bar and bat mitzvah. We arrive on time, and bring you back at the hour you set.</span></p>
             </article>
             <article class="card">
-              <h3>טיולים וקבוצות <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></h3>
-              <p>משפחה או קבוצה קטנה, כולם באותו רכב. עד 8 נוסעים, עם מקום לתיקים.</p>
+              <h3><span class="lang-he">טיולים וקבוצות</span><span class="lang-en">Trips and groups</span> <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></h3>
+              <p><span class="lang-he">משפחה או קבוצה קטנה, כולם באותו רכב. עד 8 נוסעים, עם מקום לתיקים.</span><span class="lang-en">A family or a small group, everyone in one vehicle. Up to 8 passengers, with room for bags.</span></p>
             </article>
             <article class="card">
-              <h3>חברות ועובדים <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></h3>
-              <p>פגישה, יום עיון או הסעה לעובדים. מדברים ישירות, בלי מוקד ובלי המתנה.</p>
+              <h3><span class="lang-he">חברות ועובדים</span><span class="lang-en">Companies and staff</span> <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></h3>
+              <p><span class="lang-he">פגישה, יום עיון או הסעה לעובדים. מדברים ישירות, בלי מוקד ובלי המתנה.</span><span class="lang-en">A meeting, a study day, or a ride for staff. You speak with the driver directly. No call center, no waiting.</span></p>
             </article>
           </div>
         </div>
@@ -165,15 +195,18 @@
       <section class="section section-alt" id="lama">
         <div class="wrap split">
           <div>
-            <p class="eyebrow">למה איתי</p>
-            <h2>אותו נהג, אותו רכב, עד היעד.</h2>
-            <p class="section-lead">הנהג הוא ישראל סדובסקי, מרכסים. נסיעה אחת, נהג אחד, רכב אחד. יוצאים מרכסים ומגיעים לכל הארץ, בלי החלפות באמצע.</p>
+            <p class="eyebrow"><span class="lang-he">למה איתי</span><span class="lang-en">Why ride with me</span></p>
+            <h2><span class="lang-he">אותו נהג, אותו רכב, עד היעד.</span><span class="lang-en">The same driver, the same vehicle, all the way.</span></h2>
+            <p class="section-lead">
+              <span class="lang-he">הנהג הוא ישראל סדובסקי, מרכסים. נסיעה אחת, נהג אחד, רכב אחד. יוצאים מרכסים ומגיעים לכל הארץ, בלי החלפות באמצע.</span>
+              <span class="lang-en">The driver is Israel Sadovsky, from Rekhasim. One ride, one driver, one vehicle. We leave Rekhasim and travel across Israel, with no handoff on the way.</span>
+            </p>
             <ul class="points">
-              <li>רכב מרווח ונוח, עד 8 נוסעים <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></li>
-              <li>ישראל סדובסקי נוהג בעצמו, עד הדלת <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></li>
-              <li>יוצאים מרכסים, ישראל, לכל הארץ <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></li>
-              <li>מתאם מראש, בשעה שנוחה לכם <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></li>
-              <li class="is-shabbat">לא עובד בשבת <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></li>
+              <li><span class="lang-he">רכב מרווח ונוח, עד 8 נוסעים</span><span class="lang-en">A roomy, comfortable vehicle, up to 8 passengers</span> <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></li>
+              <li><span class="lang-he">ישראל סדובסקי נוהג בעצמו, עד הדלת</span><span class="lang-en">Israel Sadovsky drives you himself, to the door</span> <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></li>
+              <li><span class="lang-he">יוצאים מרכסים, ישראל, לכל הארץ</span><span class="lang-en">Out of Rekhasim, Israel, across the country</span> <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></li>
+              <li><span class="lang-he">מתאם מראש, בשעה שנוחה לכם</span><span class="lang-en">Scheduled ahead, at a time that suits you</span> <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></li>
+              <li class="is-shabbat"><span class="lang-he">לא עובד בשבת</span><span class="lang-en">Does not work on Shabbat</span> <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></li>
             </ul>
           </div>
         </div>
@@ -181,32 +214,34 @@
           <img
             src="assets/images/staria-van.jpg"
             alt="יונדאי סטאריה לבנה, רכב ההסעות של ישראל סדובסקי"
+            data-alt-he="יונדאי סטאריה לבנה, רכב ההסעות של ישראל סדובסקי"
+            data-alt-en="White Hyundai Staria, the ride vehicle of Israel Sadovsky"
             width="1200"
             height="1600"
             loading="lazy">
-          <figcaption>סטאריה לבנה · עד 8 נוסעים</figcaption>
+          <figcaption><span class="lang-he">סטאריה לבנה · עד 8 נוסעים</span><span class="lang-en">White Staria · up to 8 passengers</span></figcaption>
         </figure>
       </section>
 
       <section class="section" id="ech">
         <div class="wrap">
-          <p class="eyebrow">איך קובעים</p>
-          <h2>שלושה צעדים, ובדרך.</h2>
+          <p class="eyebrow"><span class="lang-he">איך קובעים</span><span class="lang-en">How to book</span></p>
+          <h2><span class="lang-he">שלושה צעדים, ובדרך.</span><span class="lang-en">Three steps, then you're on the way.</span></h2>
           <ol class="steps">
             <li>
               <span class="num">01</span>
-              <h3>מתקשרים או כותבים</h3>
-              <p>מספר אחד לטלפון ולוואטסאפ. מספרים לאן, מתי וכמה נוסעים.</p>
+              <h3><span class="lang-he">מתקשרים או כותבים</span><span class="lang-en">Call or write</span></h3>
+              <p><span class="lang-he">מספר אחד לטלפון ולוואטסאפ. מספרים לאן, מתי וכמה נוסעים.</span><span class="lang-en">One number for phone and WhatsApp. Say where, when, and how many passengers.</span></p>
             </li>
             <li>
               <span class="num">02</span>
-              <h3>מתאמים את הפרטים</h3>
-              <p>נקודת איסוף, יעד ושעה שנוחה לכם. לא עובד בשבת.</p>
+              <h3><span class="lang-he">מתאמים את הפרטים</span><span class="lang-en">We set the details</span></h3>
+              <p><span class="lang-he">נקודת איסוף, יעד ושעה שנוחה לכם. לא עובד בשבת.</span><span class="lang-en">Pickup point, destination, and a time that suits you. Does not work on Shabbat.</span></p>
             </li>
             <li>
               <span class="num">03</span>
-              <h3>יוצאים לדרך</h3>
-              <p>עולים לרכב המרווח, ונוסעים בשקט עד היעד.</p>
+              <h3><span class="lang-he">יוצאים לדרך</span><span class="lang-en">On the road</span></h3>
+              <p><span class="lang-he">עולים לרכב המרווח, ונוסעים בשקט עד היעד.</span><span class="lang-en">You get into the roomy vehicle and ride quietly to the destination.</span></p>
             </li>
           </ol>
         </div>
@@ -214,13 +249,14 @@
 
       <section class="cta" id="teum">
         <div class="wrap cta-inner">
-          <p class="eyebrow">טלפון ווואטסאפ</p>
-          <h2>מתאם מראש, בשעה שנוחה לכם.</h2>
-          <a class="phone-xl" href="tel:+972527027927" aria-label="התקשרות ל-052-702-79-27">
+          <p class="eyebrow"><span class="lang-he">טלפון ווואטסאפ</span><span class="lang-en">Phone and WhatsApp</span></p>
+          <h2><span class="lang-he">מתאם מראש, בשעה שנוחה לכם.</span><span class="lang-en">Scheduled ahead, at a time that suits you.</span></h2>
+          <a class="phone-xl" href="tel:+972527027927" data-label-he="התקשרות ל-052-702-79-27" data-label-en="Call 052-702-79-27" aria-label="התקשרות ל-052-702-79-27">
             <bdi dir="ltr">052-702-79-27</bdi>
           </a>
-          <p class="shabbat-note shabbat-note-center">לא עובד בשבת</p>
-          <a class="btn btn-ghost" href="https://wa.me/972527027927?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%94%D7%A1%D7%A2%D7%94" target="_blank" rel="noopener noreferrer">שליחת הודעה בוואטסאפ</a>
+          <p class="shabbat-note shabbat-note-center"><span class="lang-he">לא עובד בשבת</span><span class="lang-en">Does not work on Shabbat</span></p>
+          <a class="btn btn-ghost lang-he" href="https://wa.me/972527027927?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%94%D7%A1%D7%A2%D7%94" target="_blank" rel="noopener noreferrer">שליחת הודעה בוואטסאפ</a>
+          <a class="btn btn-ghost lang-en" href="https://wa.me/972527027927?text=Hi%20Israel%2C%20I%20would%20like%20to%20book%20a%20ride" target="_blank" rel="noopener noreferrer">Send a WhatsApp message</a>
         </div>
       </section>
     </main>
@@ -228,22 +264,23 @@
     <footer class="site-footer">
       <div class="wrap footer-bar">
         <div>
-          <strong class="footer-name">ישראל סדובסקי</strong>
-          <p class="footer-line">נהג הסעות · רכסים, ישראל · לכל הארץ</p>
+          <strong class="footer-name"><span class="lang-he">ישראל סדובסקי</span><span class="lang-en">Israel Sadovsky</span></strong>
+          <p class="footer-line"><span class="lang-he">נהג הסעות · רכסים, ישראל · לכל הארץ</span><span class="lang-en">Private driver · Rekhasim, Israel · across Israel</span></p>
         </div>
-        <p class="footer-shabbat">לא עובד בשבת</p>
+        <p class="footer-shabbat"><span class="lang-he">לא עובד בשבת</span><span class="lang-en">Does not work on Shabbat</span></p>
         <a class="footer-phone" href="tel:+972527027927"><bdi dir="ltr">052-702-79-27</bdi></a>
       </div>
       <div class="wrap">
-        <p class="legal">© 2026 ישראל סדובסקי</p>
+        <p class="legal">© 2026 <span class="lang-he">ישראל סדובסקי</span><span class="lang-en">Israel Sadovsky</span></p>
       </div>
     </footer>
 
     <div class="callbar">
-      <p class="callbar-note">לא עובד בשבת</p>
+      <p class="callbar-note"><span class="lang-he">לא עובד בשבת</span><span class="lang-en">Does not work on Shabbat</span></p>
       <div class="callbar-actions">
-        <a class="btn btn-yellow" href="tel:+972527027927">התקשרו</a>
-        <a class="btn btn-ghost" href="https://wa.me/972527027927?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%94%D7%A1%D7%A2%D7%94" target="_blank" rel="noopener noreferrer">וואטסאפ</a>
+        <a class="btn btn-yellow" href="tel:+972527027927"><span class="lang-he">התקשרו</span><span class="lang-en">Call</span></a>
+        <a class="btn btn-ghost lang-he" href="https://wa.me/972527027927?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%94%D7%A1%D7%A2%D7%94" target="_blank" rel="noopener noreferrer">וואטסאפ</a>
+        <a class="btn btn-ghost lang-en" href="https://wa.me/972527027927?text=Hi%20Israel%2C%20I%20would%20like%20to%20book%20a%20ride" target="_blank" rel="noopener noreferrer">WhatsApp</a>
       </div>
     </div>
 
