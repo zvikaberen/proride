@@ -257,8 +257,7 @@ h3 {
   color: var(--yellow);
 }
 
-.brand-mark svg,
-.chevs {
+.brand-mark svg {
   fill: none;
   stroke: currentColor;
   stroke-width: 5;
@@ -340,13 +339,8 @@ html[lang="en"] .lang-he {
   display: none;
 }
 
-html[lang="en"] .chevs,
 html[lang="en"] .brand-mark svg {
   transform: scaleX(-1);
-}
-
-html[lang="en"] .hero .chevs {
-  transform: none;
 }
 
 html[lang="en"] .card h3,
@@ -364,7 +358,7 @@ html[lang="en"] .brand-text strong {
 }
 
 html[lang="en"] .hero h1 {
-  font-size: clamp(2.15rem, 4.2vw, 4.4rem);
+  font-size: clamp(1.45rem, 2.5vw, 2.85rem);
 }
 
 .nav-toggle {
@@ -465,26 +459,10 @@ html[lang="en"] .hero-copy {
   line-height: 1.15;
 }
 
-.title-row {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0.75rem;
-}
-
-.hero .chevs {
-  transform: scaleX(-1);
-}
-
-.chevs {
-  width: 34px;
-  height: 52px;
-  flex: none;
-  color: var(--paper);
-}
-
 .hero h1 {
-  font-size: clamp(2.35rem, 4.4vw, 4.6rem);
+  font-size: clamp(1.7rem, 3vw, 3.35rem);
+  line-height: 1.15;
+  white-space: nowrap;
 }
 
 .lede {
@@ -923,10 +901,6 @@ html[lang="en"] .hero-copy {
 }
 
 @media (max-width: 420px) {
-  .chevs {
-    display: none;
-  }
-
   .wrap {
     width: min(var(--wrap), calc(100% - 1.7rem));
   }
