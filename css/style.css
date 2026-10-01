@@ -787,7 +787,7 @@ html[lang="en"] .hero-copy {
   gap: 0.5rem;
 }
 
-@media (max-width: 759px) {
+@media (max-width: 539px) {
   .hero {
     display: block;
     direction: inherit;
@@ -819,7 +819,25 @@ html[lang="en"] .hero-copy {
   }
 }
 
-@media (min-width: 760px) {
+@media (min-width: 540px) and (max-width: 899px) {
+  .hero h1 {
+    font-size: clamp(1.2rem, 2.6vw, 1.9rem);
+  }
+
+  .hero-name {
+    font-size: clamp(1.35rem, 3.2vw, 2.1rem);
+  }
+
+  .lede {
+    font-size: 1rem;
+  }
+
+  .hero-copy {
+    padding: calc(var(--header) + 0.75rem) 1rem 1.15rem 0.75rem;
+  }
+}
+
+@media (min-width: 540px) {
   .callbar {
     display: none;
   }
