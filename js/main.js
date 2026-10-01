@@ -2,12 +2,12 @@
   var copy = {
     he: {
       title: "ישראל סדובסקי | הסעות פרטיות לכל הארץ",
-      description: "הסעות פרטיות עם הנהג ישראל סדובסקי מרכסים, ישראל, לכל הארץ. רכב מרווח עד 8 נוסעים. לא עובד בשבת. 052-702-79-27",
+      description: "הסעות פרטיות עם ישראל סדובסקי מרכסים. נסיעה אחת, נהג אחד, רכב אחד, ממקום למקום בכל הארץ, בלי החלפות. היציאה לא בהכרח מרכסים. לא עובד בשבת. 052-702-79-27",
       nav: "ניווט"
     },
     en: {
       title: "Israel Sadovsky | Private rides across Israel",
-      description: "Private rides with driver Israel Sadovsky from Rekhasim, Israel, across the country. Room for up to 8 passengers. Does not work on Shabbat. 052-702-79-27",
+      description: "Private rides with Israel Sadovsky, based in Rekhasim. One ride, one driver, one vehicle, from place to place across Israel, with no transfer. Pickup is not necessarily in Rekhasim. Does not work on Shabbat. 052-702-79-27",
       nav: "Navigation"
     }
   };
