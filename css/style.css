@@ -408,11 +408,10 @@ html[lang="en"] .hero h1 {
   position: relative;
   display: grid;
   direction: ltr;
-  grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   grid-template-rows: minmax(0, 1fr) auto;
-  height: 100dvh;
-  min-height: 640px;
-  overflow: hidden;
+  min-height: 100dvh;
+  overflow-x: clip;
 }
 
 .hero-media {
@@ -435,7 +434,7 @@ html[lang="en"] .hero h1 {
 .hero-shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, transparent 72%, #0b0b0d 100%);
+  background: linear-gradient(to right, transparent 92%, #0b0b0d 100%);
   pointer-events: none;
 }
 
@@ -779,21 +778,23 @@ html[lang="en"] .hero-copy {
   gap: 0.5rem;
 }
 
-@media (max-width: 899px) {
+@media (max-width: 759px) {
   .hero {
     display: block;
     direction: inherit;
-    height: auto;
     min-height: 0;
-    overflow: visible;
   }
 
   .hero-media {
-    height: clamp(220px, 38vh, 380px);
+    height: clamp(280px, 52vh, 460px);
+  }
+
+  .hero-media img {
+    object-position: 50% 72%;
   }
 
   .hero-shade {
-    background: linear-gradient(to top, #0b0b0d 0%, rgba(11, 11, 13, 0.28) 18%, transparent 40%);
+    background: linear-gradient(to top, #0b0b0d 0%, rgba(11, 11, 13, 0.2) 16%, transparent 36%);
   }
 
   .hero-copy {
@@ -807,7 +808,19 @@ html[lang="en"] .hero-copy {
   .hero .shabbat-note {
     display: none;
   }
+}
 
+@media (min-width: 760px) {
+  .callbar {
+    display: none;
+  }
+
+  .site-footer {
+    padding-bottom: 2.4rem;
+  }
+}
+
+@media (max-width: 899px) {
   .header-phone {
     display: none;
   }
@@ -884,8 +897,7 @@ html[lang="en"] .hero-copy {
 }
 
 @media (min-width: 900px) {
-  .nav-toggle,
-  .callbar {
+  .nav-toggle {
     display: none;
   }
 
