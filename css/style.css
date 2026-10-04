@@ -750,6 +750,15 @@ html[lang="en"] .hero-copy {
   margin-top: 1.4rem;
 }
 
+.legal a {
+  color: inherit;
+  text-underline-offset: 0.15em;
+}
+
+.legal a:hover {
+  color: var(--yellow);
+}
+
 .footer-shabbat {
   margin: 0;
   color: var(--yellow);
