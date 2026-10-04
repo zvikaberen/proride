@@ -434,7 +434,8 @@ html[lang="en"] .hero h1 {
   grid-column: 1;
   grid-row: 1;
   min-height: 0;
-  margin: 0 0.4rem 0.9rem 0.9rem;
+  margin: 0 1rem 0.9rem 0.9rem;
+  border: 2px solid var(--paper);
   border-radius: 32px;
   overflow: hidden;
   background: #0b0b0d;
@@ -450,10 +451,7 @@ html[lang="en"] .hero h1 {
 }
 
 .hero-shade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, transparent 92%, #0b0b0d 100%);
-  pointer-events: none;
+  display: none;
 }
 
 .hero-copy {
@@ -810,10 +808,6 @@ html[lang="en"] .hero-copy {
 
   .hero-media img {
     object-position: 50% 72%;
-  }
-
-  .hero-shade {
-    background: linear-gradient(to top, #0b0b0d 0%, rgba(11, 11, 13, 0.2) 16%, transparent 36%);
   }
 
   .hero-copy {
