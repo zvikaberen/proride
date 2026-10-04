@@ -14,9 +14,11 @@ python3 -m http.server 8941
 
 ## העלאה
 
-התיקייה מוכנה ל-Netlify או ל-Vercel כאתר סטטי. שורש האתר הוא תיקיית הפרויקט, עם `index.html` בכניסה.
+התיקייה מוכנה ל-Vercel כאתר סטטי. שורש האתר הוא תיקיית הפרויקט, עם `index.html` בכניסה.
 
-Vercel Web Analytics כבר מוטמע ב-`index.html`. הנתונים נאספים רק אחרי שהאתר עולה ל-Vercel ומפעילים Analytics בפרויקט (Analytics → Enable). ב-GitHub Pages הסקריפט לא נטען, כי הנתיב `/_vercel/insights/script.js` קיים רק על Vercel.
+הפרויקט ב-Vercel הוא `proride` תחת הצוות ZI COMPUTERS, מחובר לריפו `zvikaberen/proride`. כתובת הפרודקשן: https://proride-iota.vercel.app
+
+Vercel Web Analytics מופעל, והסקריפט ב-`index.html` נטען מ-`/_vercel/insights/script.js`. ב-GitHub Pages הסקריפט לא נטען, כי הנתיב הזה קיים רק על Vercel.
 
 ## מבנה
 
