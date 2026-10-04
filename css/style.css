@@ -422,8 +422,12 @@ html[lang="en"] .hero h1 {
   direction: ltr;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   grid-template-rows: minmax(0, 1fr) auto;
-  min-height: 100dvh;
-  overflow-x: clip;
+  margin: calc(var(--header) + 0.75rem) clamp(0.75rem, 2vw, 1.35rem) 1rem;
+  border: 1px solid rgba(247, 244, 236, 0.16);
+  border-radius: 32px;
+  min-height: calc(100dvh - var(--header) - 1.85rem);
+  overflow: hidden;
+  background: #0b0b0d;
 }
 
 .hero-media {
@@ -458,7 +462,7 @@ html[lang="en"] .hero h1 {
   justify-content: center;
   width: auto;
   margin: 0;
-  padding: calc(var(--header) + 1.25rem) 5vw 2rem 1.5rem;
+  padding: 1.6rem 5vw 1.6rem 1.5rem;
   text-align: start;
 }
 
@@ -791,6 +795,8 @@ html[lang="en"] .hero-copy {
   .hero {
     display: block;
     direction: inherit;
+    margin: calc(var(--header) + 0.55rem) 0.7rem 0.85rem;
+    border-radius: 22px;
     min-height: 0;
   }
 
@@ -808,9 +814,9 @@ html[lang="en"] .hero-copy {
 
   .hero-copy {
     display: block;
-    width: min(var(--wrap), calc(100% - 2.5rem));
-    margin-inline: auto;
-    padding: 0.4rem 0 2.6rem;
+    width: auto;
+    margin: 0;
+    padding: 1.05rem 1.1rem 1.35rem;
   }
 
   .hero-actions,
@@ -833,7 +839,7 @@ html[lang="en"] .hero-copy {
   }
 
   .hero-copy {
-    padding: calc(var(--header) + 0.75rem) 1rem 1.15rem 0.75rem;
+    padding: 1.15rem 1rem 1.15rem 0.75rem;
   }
 }
 
