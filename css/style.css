@@ -10,6 +10,8 @@
   --paper: #e8e4da;
   --wrap: 1120px;
   --header: 76px;
+  --frame: 16px;
+  --hero-radius: 36px;
   --font: "Heebo", "Arial Hebrew", Arial, sans-serif;
 }
 
@@ -238,13 +240,15 @@ h3 {
 
 .site-header {
   position: fixed;
-  inset-inline: 0;
-  top: 0;
+  inset-inline: var(--frame);
+  top: var(--frame);
   z-index: 30;
-  background: linear-gradient(to bottom, rgba(11, 11, 13, 0.92), rgba(11, 11, 13, 0));
+  background: transparent;
 }
 
 .site-header.is-stuck {
+  inset-inline: 0;
+  top: 0;
   background: rgba(11, 11, 13, 0.94);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(12px);
@@ -416,6 +420,11 @@ html[lang="en"] .hero h1 {
   border-top: 1px solid var(--line);
 }
 
+.hero-stage {
+  background: var(--paper);
+  padding: var(--frame);
+}
+
 .hero {
   position: relative;
   display: grid;
@@ -423,9 +432,10 @@ html[lang="en"] .hero h1 {
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   grid-template-rows: minmax(0, 1fr) auto;
   margin: 0;
-  padding: calc(var(--header) + 0.7rem) 0 0;
-  min-height: 100dvh;
+  padding: 0;
+  min-height: calc(100dvh - (var(--frame) * 2));
   overflow: hidden;
+  border-radius: var(--hero-radius);
   background: #0b0b0d;
 }
 
@@ -434,11 +444,18 @@ html[lang="en"] .hero h1 {
   grid-column: 1;
   grid-row: 1;
   min-height: 0;
-  margin: 0 1rem 0.9rem 0.9rem;
-  border: 2px solid var(--paper);
-  border-radius: 32px;
+  margin: 0;
   overflow: hidden;
   background: #0b0b0d;
+}
+
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: calc(var(--header) + 1.4rem);
+  background: linear-gradient(to bottom, rgba(11, 11, 13, 0.78), rgba(11, 11, 13, 0));
+  pointer-events: none;
 }
 
 .hero-media img {
@@ -462,7 +479,7 @@ html[lang="en"] .hero h1 {
   justify-content: center;
   width: auto;
   margin: 0;
-  padding: 1.6rem 5vw 1.6rem 1.5rem;
+  padding: calc(var(--header) + 0.7rem) 5vw 1.6rem 1.5rem;
   text-align: start;
 }
 
@@ -807,18 +824,26 @@ html[lang="en"] .hero-copy {
 }
 
 @media (max-width: 539px) {
+  :root {
+    --frame: 10px;
+    --hero-radius: 28px;
+  }
+
   .hero {
     display: block;
     direction: inherit;
     margin: 0;
-    padding: calc(var(--header) + 0.55rem) 0.7rem 0;
+    padding: var(--header) 0 0;
     min-height: 0;
   }
 
   .hero-media {
     height: clamp(280px, 52vh, 460px);
     margin: 0;
-    border-radius: 24px;
+  }
+
+  .hero-media::after {
+    display: none;
   }
 
   .hero-media img {
@@ -852,7 +877,7 @@ html[lang="en"] .hero-copy {
   }
 
   .hero-copy {
-    padding: 1.15rem 1rem 1.15rem 0.75rem;
+    padding: calc(var(--header) + 0.35rem) 1rem 1.15rem 0.75rem;
   }
 }
 
