@@ -25,6 +25,6 @@ Vercel Web Analytics מופעל, והסקריפט ב-`index.html` נטען מ-`/
 - `index.html` — הדף
 - `css/style.css` — העיצוב
 - `js/main.js` — תפריט מובייל ופס גלילה
-- `assets/images/staria-van.jpg` — תמונת הרכב
+- `assets/images/staria-van.webp` — תמונת הרכב
 
 השירות לא פעיל בשבת. זה מופיע בגוף הדף, בפס האמון, בסגירה ובתחתית המובייל.

@@ -438,7 +438,7 @@ html[lang="en"] .hero h1 {
   border: 2px solid var(--paper);
   border-radius: 36px;
   overflow: hidden;
-  background: #0b0b0d;
+  background: #fff;
 }
 
 .hero-media img {
@@ -642,6 +642,7 @@ html[lang="en"] .hero-copy {
   height: 280px;
   object-fit: contain;
   object-position: center;
+  background: #fff;
 }
 
 .van-band figcaption {
