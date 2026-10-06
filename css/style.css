@@ -446,8 +446,8 @@ html[lang="en"] .hero h1 {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: 50% 46%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .hero-shade {
@@ -639,9 +639,9 @@ html[lang="en"] .hero-copy {
 
 .van-band img {
   width: 100%;
-  height: 250px;
-  object-fit: cover;
-  object-position: 50% 52%;
+  height: 280px;
+  object-fit: contain;
+  object-position: center;
 }
 
 .van-band figcaption {
@@ -822,7 +822,7 @@ html[lang="en"] .hero-copy {
   }
 
   .hero-media img {
-    object-position: 50% 72%;
+    object-position: center;
   }
 
   .hero-copy {
@@ -937,8 +937,8 @@ html[lang="en"] .hero-copy {
 
 @media (min-width: 860px) {
   .van-band img {
-    height: 480px;
-    object-position: 50% 72%;
+    height: 420px;
+    object-position: center;
   }
 }
 
