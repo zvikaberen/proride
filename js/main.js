@@ -54,9 +54,7 @@
 
   function setStuck() {
     if (!header) return;
-    var stage = document.querySelector(".hero-stage");
-    var limit = stage ? Math.max(stage.offsetHeight - 80, 8) : 8;
-    header.classList.toggle("is-stuck", window.scrollY > limit);
+    header.classList.toggle("is-stuck", window.scrollY > 8);
   }
 
   setStuck();
