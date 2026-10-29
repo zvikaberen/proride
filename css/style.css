@@ -420,11 +420,12 @@ html[lang="en"] .hero h1 {
   position: relative;
   display: grid;
   direction: ltr;
-  grid-template-columns: minmax(0, 1.08fr) minmax(26rem, 0.92fr);
-  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  align-items: stretch;
   margin: 0;
   padding: calc(var(--header) + 0.7rem) 0 0;
-  min-height: 100dvh;
+  min-height: 0;
   overflow: hidden;
   background: #0b0b0d;
 }
@@ -433,23 +434,35 @@ html[lang="en"] .hero h1 {
   position: relative;
   grid-column: 1;
   grid-row: 1;
+  align-self: end;
+  justify-self: start;
+  width: min(clamp(300px, 38vw, 520px), calc((100vh - 220px) * 4 / 3.6));
+  height: auto;
+  max-height: calc(100vh - 220px);
+  min-width: 0;
   min-height: 0;
-  margin: 0 0.55rem 0.45rem 0.55rem;
-  border: 2px solid var(--paper);
-  border-radius: 36px;
+  aspect-ratio: 4 / 3.6;
+  margin: 0;
+  margin-inline-start: clamp(16px, 4vw, 64px);
+  border: none;
+  border-radius: 9999px 9999px 0 0;
   overflow: hidden;
   background: #fff;
+  transform: translate3d(0, 0, 0);
 }
 
 .hero-media img {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 192%;
-  height: 192%;
-  transform: translate(-50%, -50%);
+  right: 6%;
+  bottom: 4%;
+  left: 6%;
+  width: 88%;
+  height: auto;
+  max-height: 92%;
+  margin: 0 auto;
   object-fit: contain;
-  object-position: center;
+  object-position: center bottom;
+  transform: translate3d(0, 0, 0);
 }
 
 .hero-shade {
@@ -497,20 +510,39 @@ html[lang="en"] .hero-copy {
   max-width: 36rem;
   color: var(--paper);
   font-size: 1.15rem;
+  text-wrap: balance;
+  text-wrap: pretty;
 }
 
 .hero-actions {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-items: stretch;
   gap: 0.75rem;
   max-width: 36rem;
   margin-top: 1.4rem;
 }
 
 .hero-actions .btn {
-  flex: 1 1 12rem;
-  max-width: 100%;
+  flex: none;
+  width: 100%;
+}
+
+.hero-actions .btn-yellow,
+.hero-actions .btn-yellow:hover {
+  background: var(--yellow);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-actions .btn-yellow:hover {
+    background: var(--yellow-2);
+  }
+}
+
+.hero .shabbat-note {
+  justify-content: center;
+  width: 100%;
+  max-width: 36rem;
 }
 
 .hero-slash {
@@ -525,7 +557,7 @@ html[lang="en"] .hero-copy {
 .hero-slash span {
   display: block;
   height: 28px;
-  margin-top: 4px;
+  margin-top: 0;
   background:
     linear-gradient(var(--paper), var(--paper)) 0 0 / 100% 6px no-repeat,
     linear-gradient(var(--yellow), var(--yellow)) 0 8px / 100% 18px no-repeat;
@@ -642,12 +674,21 @@ html[lang="en"] .hero-copy {
   margin: 2.2rem 0 0;
 }
 
-.van-band img {
-  width: 100%;
+.van-frame {
+  overflow: hidden;
   height: 280px;
+  background: #fff;
+}
+
+.van-band img {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   object-position: center;
   background: #fff;
+  transform: translate3d(0, 0, 0) scale(1.06);
+  will-change: transform;
 }
 
 .van-band figcaption {
@@ -812,23 +853,45 @@ html[lang="en"] .hero-copy {
   gap: 0.5rem;
 }
 
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+}
+
 @media (max-width: 539px) {
   .hero {
-    display: block;
-    direction: inherit;
+    display: grid;
+    direction: ltr;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
     margin: 0;
     padding: calc(var(--header) + 0.55rem) 0.7rem 0;
     min-height: 0;
   }
 
   .hero-media {
-    height: clamp(340px, 62vh, 540px);
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+    width: auto;
+    height: auto;
     margin: 0;
-    border-radius: 28px;
+    border-radius: 9999px 9999px 0 0;
+  }
+
+  .hero-copy {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .hero-slash {
+    grid-column: 1;
+    grid-row: 3;
   }
 
   .hero-media img {
-    object-position: center;
+    object-position: center bottom;
   }
 
   .hero-copy {
@@ -838,15 +901,18 @@ html[lang="en"] .hero-copy {
     padding: 1.05rem 1.1rem 1.35rem;
   }
 
-  .hero-actions,
+  .hero-actions {
+    display: flex;
+  }
+
   .hero .shabbat-note {
-    display: none;
+    display: inline-flex;
   }
 }
 
 @media (min-width: 540px) and (max-width: 899px) {
   .hero {
-    grid-template-columns: minmax(0, 1fr) minmax(16.5rem, 1fr);
+    grid-template-columns: auto minmax(0, 1fr);
   }
 
   .hero-name,
@@ -952,9 +1018,8 @@ html[lang="en"] .hero-copy {
 }
 
 @media (min-width: 860px) {
-  .van-band img {
+  .van-frame {
     height: 420px;
-    object-position: center;
   }
 }
 
@@ -984,6 +1049,88 @@ html[lang="en"] .hero-copy {
   }
 }
 
+@media (min-width: 641px) {
+  .hero {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    align-items: stretch;
+    height: auto;
+    max-height: none;
+  }
+
+  .hero-media {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+    justify-self: start;
+    width: min(clamp(300px, 38vw, 520px), calc((100vh - 220px) * 4 / 3.6));
+    height: auto;
+    max-height: calc(100vh - 220px);
+    min-width: 0;
+    min-height: 0;
+    aspect-ratio: 4 / 3.6;
+    margin: 0;
+    margin-inline-start: clamp(16px, 4vw, 64px);
+  }
+
+  .hero-copy {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .hero-slash {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 739px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    align-items: start;
+    height: auto;
+    max-height: none;
+  }
+
+  .hero-copy {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+    width: auto;
+  }
+
+  .hero-media {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: center;
+    align-self: end;
+    width: 72%;
+    max-width: 320px;
+    height: auto;
+    max-height: none;
+    min-width: 0;
+    min-height: 0;
+    aspect-ratio: 4 / 3.2;
+    margin: 24px auto 0;
+    margin-inline: auto;
+  }
+
+  .callbar {
+    display: none;
+  }
+
+  .hero-slash {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .hero-name,
+  .hero h1 {
+    white-space: normal;
+  }
+}
+
 @media (max-width: 420px) {
   .wrap {
     width: min(var(--wrap), calc(100% - 1.7rem));
@@ -997,6 +1144,11 @@ html[lang="en"] .hero-copy {
 
   .btn {
     transition: none;
+  }
+
+  .van-band img {
+    transform: translate3d(0, 0, 0) scale(1.06);
+    will-change: auto;
   }
 }
 
