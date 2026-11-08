@@ -234,6 +234,9 @@ h3 {
 
 .shabbat-note-center {
   margin-inline: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
 }
 
 .site-header {
