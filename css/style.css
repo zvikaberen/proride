@@ -444,17 +444,15 @@ html[lang="en"] .hero h1 {
   aspect-ratio: 4 / 3.6;
   margin: 0;
   margin-inline-start: clamp(16px, 4vw, 64px);
-  border: none;
-  border-radius: 9999px 9999px 0 0;
-  overflow: hidden;
-  background: #fff;
+  z-index: 1;
+  pointer-events: none;
   transform: translate3d(0, 0, 0);
 }
 
 .hero-media img {
   position: absolute;
   right: 6%;
-  bottom: 4%;
+  bottom: calc(-2.62vw - 9px);
   left: 6%;
   width: 88%;
   height: auto;
@@ -466,7 +464,12 @@ html[lang="en"] .hero h1 {
 }
 
 .hero-shade {
-  display: none;
+  position: absolute;
+  inset-inline: 10%;
+  bottom: calc(-2.62vw - 9px);
+  height: 12px;
+  z-index: -1;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.55), transparent 70%);
 }
 
 .hero-copy {
@@ -540,9 +543,21 @@ html[lang="en"] .hero-copy {
 }
 
 .hero .shabbat-note {
-  justify-content: center;
-  width: 100%;
-  max-width: 36rem;
+  align-self: flex-start;
+  margin-top: 0.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 500;
+  cursor: default;
+}
+
+.hero .shabbat-note::before {
+  width: 0.4rem;
+  height: 0.4rem;
+  background: currentColor;
 }
 
 .hero-slash {
@@ -595,19 +610,6 @@ html[lang="en"] .hero-copy {
 .trust span {
   color: var(--muted);
   font-size: 0.92rem;
-}
-
-.trust .is-shabbat {
-  align-content: center;
-  background: rgba(245, 196, 0, 0.1);
-}
-
-.trust .is-shabbat b,
-.trust .is-shabbat b span {
-  color: var(--yellow);
-  font-size: clamp(1.45rem, 2.2vw, 1.85rem);
-  font-weight: 800;
-  line-height: 1.2;
 }
 
 .section {
@@ -665,37 +667,36 @@ html[lang="en"] .hero-copy {
   font-weight: 500;
 }
 
-.points .is-shabbat {
-  color: var(--yellow);
-  font-weight: 800;
+.israel-photos:not([hidden]) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  align-items: start;
+  gap: 1rem;
+  margin-top: 2.2rem;
 }
 
-.van-band {
-  margin: 2.2rem 0 0;
-}
-
-.van-frame {
-  overflow: hidden;
-  height: 280px;
-  background: #fff;
-}
-
-.van-band img {
-  display: block;
+.israel-photos img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  background: #fff;
-  transform: translate3d(0, 0, 0) scale(1.06);
-  will-change: transform;
+  height: auto;
 }
 
-.van-band figcaption {
-  width: min(var(--wrap), calc(100% - 2.5rem));
-  margin: 0.7rem auto 0;
+.testimonials h2 {
+  color: var(--yellow);
+}
+
+.testimonials .testimonial-card {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  overflow-wrap: anywhere;
+}
+
+.testimonials blockquote {
+  margin: 0;
+}
+
+.testimonials .testimonial-credit {
+  margin-top: 0.7rem;
   color: var(--muted);
-  font-size: 0.92rem;
 }
 
 .steps {
@@ -811,13 +812,6 @@ html[lang="en"] .hero-copy {
   color: var(--yellow);
 }
 
-.footer-shabbat {
-  margin: 0;
-  color: var(--yellow);
-  font-size: 1.35rem;
-  font-weight: 800;
-}
-
 .footer-phone {
   font-size: 1.85rem;
   font-weight: 800;
@@ -837,14 +831,6 @@ html[lang="en"] .hero-copy {
   padding: 0.45rem 0.75rem calc(0.6rem + env(safe-area-inset-bottom));
   border-top: 1px solid rgba(245, 196, 0, 0.45);
   background: rgba(11, 11, 13, 0.96);
-}
-
-.callbar-note {
-  margin: 0 0 0.35rem;
-  color: var(--yellow);
-  font-size: 0.85rem;
-  font-weight: 800;
-  text-align: center;
 }
 
 .callbar-actions {
@@ -877,7 +863,6 @@ html[lang="en"] .hero-copy {
     width: auto;
     height: auto;
     margin: 0;
-    border-radius: 9999px 9999px 0 0;
   }
 
   .hero-copy {
@@ -984,11 +969,6 @@ html[lang="en"] .hero-copy {
   .hero-slash {
     margin-bottom: 0;
   }
-
-  .trust .is-shabbat {
-    grid-column: 1 / -1;
-    border-inline-start: 0;
-  }
 }
 
 @media (min-width: 720px) {
@@ -1002,9 +982,29 @@ html[lang="en"] .hero-copy {
   }
 }
 
+@media (max-width: 979px) {
+  .trust {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .trust li,
+  .trust li:nth-child(odd) {
+    padding: 0.95rem 0.6rem 1rem;
+    border-inline-start: 1px solid var(--line);
+  }
+
+  .trust li:first-child {
+    border-inline-start: 0;
+  }
+
+  .trust b {
+    font-size: clamp(0.85rem, 3.4vw, 1.1rem);
+  }
+}
+
 @media (min-width: 980px) {
   .trust {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .trust li,
@@ -1014,12 +1014,6 @@ html[lang="en"] .hero-copy {
 
   .trust li:first-child {
     border-inline-start: 0;
-  }
-}
-
-@media (min-width: 860px) {
-  .van-frame {
-    height: 420px;
   }
 }
 
@@ -1084,7 +1078,7 @@ html[lang="en"] .hero-copy {
   }
 }
 
-@media (max-width: 739px) {
+@media (max-width: 768px) {
   .hero {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto auto auto;
@@ -1095,39 +1089,42 @@ html[lang="en"] .hero-copy {
 
   .hero-copy {
     grid-column: 1;
-    grid-row: 1;
+    grid-row: 3;
     align-self: start;
     width: auto;
   }
 
   .hero-media {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 1;
     justify-self: center;
     align-self: end;
-    width: 72%;
-    max-width: 320px;
-    height: auto;
+    width: min(62%, 260px);
     max-height: none;
-    min-width: 0;
-    min-height: 0;
-    aspect-ratio: 4 / 3.2;
-    margin: 24px auto 0;
-    margin-inline: auto;
+    aspect-ratio: 3 / 2;
+    margin: 0 auto;
   }
 
-  .callbar {
-    display: none;
+  .hero-media img,
+  .hero-shade {
+    bottom: calc(-1.31vw - 12px);
   }
 
   .hero-slash {
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 2;
+    height: 32px;
   }
 
   .hero-name,
   .hero h1 {
     white-space: normal;
+  }
+}
+
+@media (max-width: 739px) {
+  .callbar {
+    display: none;
   }
 }
 
@@ -1144,11 +1141,6 @@ html[lang="en"] .hero-copy {
 
   .btn {
     transition: none;
-  }
-
-  .van-band img {
-    transform: translate3d(0, 0, 0) scale(1.06);
-    will-change: auto;
   }
 }
 

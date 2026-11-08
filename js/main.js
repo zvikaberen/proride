@@ -1,13 +1,19 @@
+// Photo fields: src, altHe, altEn.
+const ISRAEL_PHOTOS = [];
+
+// Testimonial fields: text, name, route. Each field is an object with he and en keys.
+const TESTIMONIALS = [];
+
 (function () {
   var copy = {
     he: {
       title: "ישראל סדובסקי | הסעות פרטיות לכל הארץ",
-      description: "הסעות פרטיות עם ישראל סדובסקי מרכסים. נסיעה אחת, נהג אחד, רכב אחד, ממקום למקום בכל הארץ, בלי החלפות. לא עובד בשבת. 052-702-79-27",
+      description: "הסעות פרטיות עם ישראל סדובסקי מרכסים. נסיעה אחת, נהג אחד, רכב אחד, ממקום למקום בכל הארץ, בלי החלפות. 052-702-79-27",
       nav: "ניווט"
     },
     en: {
       title: "Israel Sadovsky | Private rides across Israel",
-      description: "Private rides with Israel Sadovsky, based in Rekhasim. One ride, one driver, one vehicle, from place to place across Israel, with no transfer. Does not work on Shabbat. 052-702-79-27",
+      description: "Private rides with Israel Sadovsky, based in Rekhasim. One ride, one driver, one vehicle, from place to place across Israel, with no transfer. 052-702-79-27",
       nav: "Navigation"
     }
   };
@@ -38,6 +44,52 @@
     try {
       localStorage.setItem("lang", lang);
     } catch (e) {}
+  }
+
+  function appendBilingual(parent, copy) {
+    ["he", "en"].forEach(function (lang) {
+      var span = document.createElement("span");
+      span.className = "lang-" + lang;
+      span.textContent = copy[lang];
+      parent.appendChild(span);
+    });
+  }
+
+  var gallery = document.querySelector("[data-israel-photos]");
+  if (gallery && ISRAEL_PHOTOS.length) {
+    ISRAEL_PHOTOS.forEach(function (photo) {
+      var img = document.createElement("img");
+      img.loading = "lazy";
+      img.dataset.altHe = photo.altHe;
+      img.dataset.altEn = photo.altEn;
+      img.alt = document.documentElement.lang === "en" ? photo.altEn : photo.altHe;
+      img.src = photo.src;
+      gallery.appendChild(img);
+    });
+    gallery.hidden = false;
+  }
+
+  var testimonials = document.querySelector("[data-testimonials]");
+  var cards = document.querySelector("[data-testimonial-cards]");
+  if (testimonials && cards && TESTIMONIALS.length) {
+    TESTIMONIALS.forEach(function (testimonial) {
+      var card = document.createElement("figure");
+      card.className = "card testimonial-card";
+
+      var quote = document.createElement("blockquote");
+      appendBilingual(quote, testimonial.text);
+
+      var credit = document.createElement("figcaption");
+      credit.className = "testimonial-credit";
+      appendBilingual(credit, {
+        he: testimonial.name.he + " · " + testimonial.route.he,
+        en: testimonial.name.en + " · " + testimonial.route.en
+      });
+
+      card.append(quote, credit);
+      cards.appendChild(card);
+    });
+    testimonials.hidden = false;
   }
 
   applyLang(document.documentElement.lang);
@@ -178,140 +230,6 @@
   function sync() {
     if (fine.matches && !reduce.matches) enable();
     else disable();
-  }
-
-  sync();
-  fine.addEventListener("change", sync);
-  reduce.addEventListener("change", sync);
-})();
-
-(function () {
-  var frame = document.querySelector(".van-frame");
-  var img = frame ? frame.querySelector("img") : null;
-  if (!frame || !img) return;
-
-  var fine = window.matchMedia("(hover: hover) and (pointer: fine)");
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-  var tx = 0;
-  var ty = 0;
-  var x = 0;
-  var y = 0;
-  var frameId = 0;
-  var mode = "off";
-  var watching = false;
-  var io = null;
-
-  function paint() {
-    img.style.transform = "translate3d(" + x.toFixed(2) + "px," + y.toFixed(2) + "px,0) scale(1.06)";
-  }
-
-  function tick() {
-    x += (tx - x) * 0.08;
-    y += (ty - y) * 0.08;
-    if (Math.abs(tx - x) < 0.04 && Math.abs(ty - y) < 0.04) {
-      x = tx;
-      y = ty;
-      paint();
-      frameId = 0;
-      return;
-    }
-    paint();
-    frameId = requestAnimationFrame(tick);
-  }
-
-  function aim(nextX, nextY) {
-    tx = nextX;
-    ty = nextY;
-    if (!frameId) frameId = requestAnimationFrame(tick);
-  }
-
-  function clampUnit(value) {
-    if (value > 1) return 1;
-    if (value < -1) return -1;
-    return value;
-  }
-
-  function onMove(event) {
-    if (event.pointerType && event.pointerType !== "mouse") return;
-    var box = frame.getBoundingClientRect();
-    var px = clampUnit(((event.clientX - box.left) / box.width) * 2 - 1);
-    var py = clampUnit(((event.clientY - box.top) / box.height) * 2 - 1);
-    aim(-px * 12, -py * 8);
-  }
-
-  function onLeave() {
-    aim(0, 0);
-  }
-
-  function onScroll() {
-    var box = frame.getBoundingClientRect();
-    var view = window.innerHeight || 1;
-    var center = box.top + box.height / 2;
-    var progress = (view - center) / view;
-    if (progress < 0) progress = 0;
-    if (progress > 1) progress = 1;
-    aim(0, (progress - 0.5) * 20);
-  }
-
-  function watchScroll(on) {
-    if (on === watching) return;
-    watching = on;
-    if (on) {
-      window.addEventListener("scroll", onScroll, { passive: true });
-      window.addEventListener("resize", onScroll, { passive: true });
-      onScroll();
-    } else {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      aim(0, 0);
-    }
-  }
-
-  function stop() {
-    frame.removeEventListener("pointermove", onMove);
-    frame.removeEventListener("pointerleave", onLeave);
-    watchScroll(false);
-    if (io) {
-      io.disconnect();
-      io = null;
-    }
-    if (frameId) cancelAnimationFrame(frameId);
-    frameId = 0;
-    tx = 0;
-    ty = 0;
-    x = 0;
-    y = 0;
-    img.style.transform = "translate3d(0,0,0) scale(1.06)";
-  }
-
-  function startMouse() {
-    stop();
-    mode = "mouse";
-    frame.addEventListener("pointermove", onMove);
-    frame.addEventListener("pointerleave", onLeave);
-  }
-
-  function startScroll() {
-    stop();
-    mode = "scroll";
-    if (typeof IntersectionObserver !== "function") return;
-    io = new IntersectionObserver(function (entries) {
-      watchScroll(entries.some(function (entry) { return entry.isIntersecting; }));
-    });
-    io.observe(frame);
-  }
-
-  function sync() {
-    if (reduce.matches) {
-      stop();
-      mode = "off";
-      return;
-    }
-    if (fine.matches) {
-      if (mode !== "mouse") startMouse();
-    } else if (mode !== "scroll") {
-      startScroll();
-    }
   }
 
   sync();
