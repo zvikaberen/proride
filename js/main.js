@@ -8,12 +8,12 @@ const TESTIMONIALS = [];
   var copy = {
     he: {
       title: "ישראל סדובסקי | הסעות פרטיות לכל הארץ",
-      description: "הסעות פרטיות עם ישראל סדובסקי מרכסים. נסיעה אחת, נהג אחד, רכב אחד, ממקום למקום בכל הארץ, בלי החלפות. 052-702-79-27",
+      description: "הסעות פרטיות עם ישראל סדובסקי מרכסים. נסיעה אחת, נהג אחד, רכב אחד, ממקום למקום בכל הארץ, בלי החלפות. לא עובד בשבת. 052-702-79-27",
       nav: "ניווט"
     },
     en: {
       title: "Israel Sadovsky | Private rides across Israel",
-      description: "Private rides with Israel Sadovsky, based in Rekhasim. One ride, one driver, one vehicle, from place to place across Israel, with no transfer. 052-702-79-27",
+      description: "Private rides with Israel Sadovsky, based in Rekhasim. One ride, one driver, one vehicle, from place to place across Israel, with no transfer. Does not work on Shabbat. 052-702-79-27",
       nav: "Navigation"
     }
   };
