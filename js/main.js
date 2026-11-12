@@ -1,5 +1,11 @@
 // Photo fields: src, altHe, altEn.
-const ISRAEL_PHOTOS = [];
+const ISRAEL_PHOTOS = [
+  {
+    src: "assets/images/israel-driver.jpg",
+    altHe: "ישראל סדובסקי ליד ההגה",
+    altEn: "Israel Sadovsky at the wheel"
+  }
+];
 
 // Testimonial fields: text, name, route. Each field is an object with he and en keys.
 const TESTIMONIALS = [];

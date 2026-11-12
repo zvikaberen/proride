@@ -610,6 +610,7 @@ html[lang="en"] .tick {
 
 .israel-photos img {
   width: 100%;
+  max-width: 360px;
   height: auto;
   border-radius: 8px;
 }
@@ -829,6 +830,31 @@ html[lang="en"] .tick {
   to {
     transform: translate3d(0, 0, 0);
   }
+}
+
+.section.car4 {
+  padding-top: var(--section);
+}
+
+.car4-copy {
+  max-width: 640px;
+  margin: 16px 0 0;
+}
+
+.car4-photos {
+  direction: ltr;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.car4-photos img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 @media (hover: hover) and (pointer: fine) {
