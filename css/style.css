@@ -1117,3 +1117,10 @@ html[lang="en"] .tick {
     grid-row: 4;
   }
 }
+
+/* Tablet hero: scale the van so signs stay near the first screen */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .hero-van {
+    width: min(calc(100% - 48px), clamp(300px, calc((100dvh - 600px) * 1.5), 700px));
+  }
+}
