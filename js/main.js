@@ -46,17 +46,19 @@ const TESTIMONIALS = [];
     } catch (e) {}
   }
 
-  function appendBilingual(parent, copy) {
+  function appendBilingual(parent, text) {
     ["he", "en"].forEach(function (lang) {
       var span = document.createElement("span");
       span.className = "lang-" + lang;
-      span.textContent = copy[lang];
+      span.textContent = text[lang];
       parent.appendChild(span);
     });
   }
 
   var gallery = document.querySelector("[data-israel-photos]");
   if (gallery && ISRAEL_PHOTOS.length) {
+    var placeholder = gallery.querySelector("[data-israel-placeholder]");
+    if (placeholder) placeholder.remove();
     ISRAEL_PHOTOS.forEach(function (photo) {
       var img = document.createElement("img");
       img.loading = "lazy";
@@ -66,7 +68,6 @@ const TESTIMONIALS = [];
       img.src = photo.src;
       gallery.appendChild(img);
     });
-    gallery.hidden = false;
   }
 
   var testimonials = document.querySelector("[data-testimonials]");
@@ -74,7 +75,7 @@ const TESTIMONIALS = [];
   if (testimonials && cards && TESTIMONIALS.length) {
     TESTIMONIALS.forEach(function (testimonial) {
       var card = document.createElement("figure");
-      card.className = "card testimonial-card";
+      card.className = "testimonial-card";
 
       var quote = document.createElement("blockquote");
       appendBilingual(quote, testimonial.text);
@@ -103,10 +104,30 @@ const TESTIMONIALS = [];
   var header = document.querySelector("[data-header]");
   var toggle = document.querySelector("[data-nav-toggle]");
   var nav = document.querySelector("[data-nav]");
+  var callbar = document.querySelector("[data-callbar]");
+  var hero = document.querySelector(".hero");
 
   function setStuck() {
     if (!header) return;
     header.classList.toggle("is-stuck", window.scrollY > 8);
+  }
+
+  function setCallbar(heroOnScreen) {
+    if (!callbar) return;
+    callbar.classList.toggle("is-hidden", heroOnScreen);
+    if (heroOnScreen) callbar.setAttribute("inert", "");
+    else callbar.removeAttribute("inert");
+  }
+
+  if (callbar && hero && "IntersectionObserver" in window) {
+    var watch = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        setCallbar(entry.isIntersecting);
+      });
+    });
+    watch.observe(hero);
+  } else {
+    setCallbar(false);
   }
 
   setStuck();
@@ -143,96 +164,4 @@ const TESTIMONIALS = [];
     if (nav.classList.contains("is-open") && Math.abs(window.scrollY - lastY) > 12) closeNav();
     lastY = window.scrollY;
   }, { passive: true });
-})();
-
-(function () {
-  var hero = document.querySelector(".hero");
-  var arch = document.querySelector(".hero-media");
-  var van = arch ? arch.querySelector("img") : null;
-  if (!hero || !arch || !van) return;
-
-  var fine = window.matchMedia("(hover: hover) and (pointer: fine)");
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-  var tx = 0;
-  var ty = 0;
-  var x = 0;
-  var y = 0;
-  var frame = 0;
-  var on = false;
-
-  function paint() {
-    var ax = (-x).toFixed(2);
-    var ay = (-y).toFixed(2);
-    var vx = ((-x * 14) / 6).toFixed(2);
-    var vy = ((-y * 14) / 6).toFixed(2);
-    arch.style.transform = "translate3d(" + ax + "px," + ay + "px,0)";
-    van.style.transform = "translate3d(" + vx + "px," + vy + "px,0)";
-  }
-
-  function tick() {
-    x += (tx - x) * 0.08;
-    y += (ty - y) * 0.08;
-    if (Math.abs(tx - x) < 0.04 && Math.abs(ty - y) < 0.04) {
-      x = tx;
-      y = ty;
-      paint();
-      frame = 0;
-      return;
-    }
-    paint();
-    frame = requestAnimationFrame(tick);
-  }
-
-  function aim(nextX, nextY) {
-    tx = nextX;
-    ty = nextY;
-    if (!frame) frame = requestAnimationFrame(tick);
-  }
-
-  function onMove(event) {
-    if (event.pointerType && event.pointerType !== "mouse") return;
-    var box = hero.getBoundingClientRect();
-    var nx = ((event.clientX - box.left) / box.width) * 2 - 1;
-    var ny = ((event.clientY - box.top) / box.height) * 2 - 1;
-    if (nx > 1) nx = 1;
-    if (nx < -1) nx = -1;
-    if (ny > 1) ny = 1;
-    if (ny < -1) ny = -1;
-    aim(nx * 6, ny * 6);
-  }
-
-  function onLeave() {
-    aim(0, 0);
-  }
-
-  function enable() {
-    if (on) return;
-    on = true;
-    hero.addEventListener("pointermove", onMove);
-    hero.addEventListener("pointerleave", onLeave);
-  }
-
-  function disable() {
-    if (!on && !arch.style.transform) return;
-    on = false;
-    hero.removeEventListener("pointermove", onMove);
-    hero.removeEventListener("pointerleave", onLeave);
-    if (frame) cancelAnimationFrame(frame);
-    frame = 0;
-    tx = 0;
-    ty = 0;
-    x = 0;
-    y = 0;
-    arch.style.transform = "translate3d(0,0,0)";
-    van.style.transform = "translate3d(0,0,0)";
-  }
-
-  function sync() {
-    if (fine.matches && !reduce.matches) enable();
-    else disable();
-  }
-
-  sync();
-  fine.addEventListener("change", sync);
-  reduce.addEventListener("change", sync);
 })();
